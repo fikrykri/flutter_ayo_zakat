@@ -1,4 +1,4 @@
-# ayo_zakat
+# flutter_ayo_zakat
 
 A new Flutter project.
 
