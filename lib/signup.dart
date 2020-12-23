@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ayo_zakat/animation/animation.dart';
 
 class SignupPage extends StatelessWidget {
   @override
@@ -27,12 +28,12 @@ class SignupPage extends StatelessWidget {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  Animation(1, Text("Sign up", style: TextStyle(
+                  MyAnimation(1, Text("Sign up", style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold
                   ),)),
                   SizedBox(height: 20,),
-                  Animation(1.2, Text("Create an account, It's free", style: TextStyle(
+                  MyAnimation(1.2, Text("Create an account, It's free", style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey[700]
                   ),)),
@@ -40,9 +41,9 @@ class SignupPage extends StatelessWidget {
               ),
               Column(
                 children: <Widget>[
-                  Animation(1.2, makeInput(label: "Email")),
-                  Animation(1.3, makeInput(label: "Password", obscureText: true)),
-                  Animation(1.4, makeInput(label: "Confirm Password", obscureText: true)),
+                  MyAnimation(1.2, makeInput(label: "Email")),
+                  MyAnimation(1.3, makeInput(label: "Password", obscureText: true)),
+                  MyAnimation(1.4, makeInput(label: "Confirm Password", obscureText: true)),
                 ],
               ),
               child: MaterialButton(
@@ -60,7 +61,7 @@ class SignupPage extends StatelessWidget {
                   ),),
                 ),
               )),
-            Animation(1.6, Row(
+            MyAnimation(1.6, Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text("Already have an account?"),
