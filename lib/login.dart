@@ -42,6 +42,7 @@ class Loginpage extends StatelessWidget
                       children: <Widget>[
                         FadeAnimation(1.2, makeInput(label: "Email")),
                         FadeAnimation(1.3, makeInput(label: "Password", obscureText: true)),
+                        FadeAnimation(1.4, makeInput(label: "ConfirmPassword", obscureText: true)),
                       ],
                     ),
                   ),
