@@ -1,6 +1,5 @@
 import 'package:flutter/Material.dart';
 import 'package:flutter/gestures.dart';
-
 class Loginpage extends StatelessWidget
   @override
   Widget build(Buildcontext context) {
@@ -43,7 +42,6 @@ class Loginpage extends StatelessWidget
                       children: <Widget>[
                         FadeAnimation(1.2, makeInput(label: "Email")),
                         FadeAnimation(1.3, makeInput(label: "Password", obscureText: true)),
-                        FadeAnimation(1.4, makeInput(label: "Confirm Password", obscureText: true)),
                       ],
                     ),
                   ),
@@ -62,7 +60,7 @@ class Loginpage extends StatelessWidget
                       ),
                       child: MaterialButton(
                         minWidth: double.infinity,
-                        height: 60,
+                        height: 59,
                         onPressed: () {},
                         color: Colors.greenAccent,
                         elevation: 0,
@@ -118,10 +116,10 @@ class Loginpage extends StatelessWidget
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[400])
+              borderSide: BorderSide(color: Colors.black[400])
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[400])
+              borderSide: BorderSide(color: Colors.black[400])
             ),
           ),
         ),
