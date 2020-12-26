@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
+import 'package:flutter_ayo_zakat/firebase_auth.dart';
+import 'package:flutter_ayo_zakat/login_page.dart';
 
-class SignupPage extends StatelessWidget {
+import 'landing_page.dart';
+
+class SignupPage extends StatefulWidget {
+  @override
+  _SignupPageState createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passController = TextEditingController();
+  TextEditingController _confirmPassController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,55 +65,133 @@ class SignupPage extends StatelessWidget {
                       )),
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  MyAnimation(1.2, makeInput(label: "Email")),
-                  MyAnimation(
-                      1.3, makeInput(label: "Password", obscureText: true)),
-                  MyAnimation(1.4,
-                      makeInput(label: "Confirm Password", obscureText: true)),
-                ],
-              ),
-              MyAnimation(
-                  1.5,
-                  Container(
-                    padding: EdgeInsets.only(top: 3, left: 3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border(
-                          bottom: BorderSide(color: Colors.black),
-                          top: BorderSide(color: Colors.black),
-                          left: BorderSide(color: Colors.black),
-                          right: BorderSide(color: Colors.black),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    MyAnimation(
+                        1.2,
+                        makeInput(
+                            label: "Email",
+                            controller: _emailController,
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Email tidak boleh kosong!';
+                              } else {
+                                return null;
+                              }
+                            })),
+                    MyAnimation(
+                        1.3,
+                        makeInput(
+                            label: "Password",
+                            obscureText: true,
+                            controller: _passController,
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Password tidak boleh kosong';
+                              } else {
+                                return null;
+                              }
+                            })),
+                    MyAnimation(
+                        1.4,
+                        makeInput(
+                            label: "Confirm Password",
+                            obscureText: true,
+                            controller: _confirmPassController,
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Password tidak boleh kosong';
+                              } else if (val != _passController.text) {
+                                return 'Password tidak sama!';
+                              } else {
+                                return null;
+                              }
+                            })),
+                    MyAnimation(
+                        1.5,
+                        Container(
+                          padding: EdgeInsets.only(top: 3, left: 3),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border(
+                                bottom: BorderSide(color: Colors.black),
+                                top: BorderSide(color: Colors.black),
+                                left: BorderSide(color: Colors.black),
+                                right: BorderSide(color: Colors.black),
+                              )),
+                          child: MaterialButton(
+                            minWidth: double.infinity,
+                            height: 60,
+                            onPressed: () async {
+                              if (_formKey.currentState.validate()) {
+                                SignInSignUpResult result =
+                                    await AuthService.createUser(
+                                        email: _emailController.text,
+                                        pass: _passController.text);
+                                if (result.user != null) {
+                                  // Go to profile page
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LandingPage(user: result.user)));
+                                } else {
+                                  // Show dialog
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                            title: Text("Error"),
+                                            content: Text(result.message),
+                                            actions: [
+                                              FlatButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text("OK"))
+                                            ],
+                                          ));
+                                }
+                              }
+                            },
+                            color: Colors.greenAccent,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Text(
+                              "Sign up",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 18),
+                            ),
+                          ),
                         )),
-                    child: MaterialButton(
-                      minWidth: double.infinity,
-                      height: 60,
-                      onPressed: () {},
-                      color: Colors.greenAccent,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18),
-                      ),
-                    ),
-                  )),
-              MyAnimation(
-                  1.6,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Already have an account?"),
-                      Text(
-                        " Login",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18),
-                      ),
-                    ],
-                  )),
+                  ],
+                ),
+              ),
+              Container(
+                child: MyAnimation(
+                    1.6,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Already have an account?"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
+                          child: Text(
+                            " Login",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    )),
+              ),
             ],
           ),
         ),
@@ -106,7 +199,7 @@ class SignupPage extends StatelessWidget {
     );
   }
 
-  Widget makeInput({label, obscureText = false}) {
+  Widget makeInput({label, obscureText = false, controller, validator}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -118,13 +211,17 @@ class SignupPage extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        TextField(
+        TextFormField(
           obscureText: obscureText,
+          controller: controller,
+          validator: validator,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey[400])),
             border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey[400])),
+            errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey[400])),
           ),
         ),
