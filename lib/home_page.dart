@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
 import 'package:flutter_ayo_zakat/login_page.dart';
-import 'package:flutter_ayo_zakat/signup.dart';
+import 'package:flutter_ayo_zakat/signup_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
