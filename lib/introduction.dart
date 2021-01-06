@@ -55,18 +55,18 @@ class _IntroPageState extends State<IntroPage> {
             controller: _pageController,
             children: <Widget>[
               makePage(
-                image: '',
+                image: 'assets/intro1.png',
                 title: Strings.stepOneTitle,
                 content: Strings.stepOneContent
               ),
               makePage(
                 reverse: true,
-                image: '',
+                image: 'assets/intro2.png',
                 title: Strings.stepTwoTitle,
                 content: Strings.stepTwoContent
               ),
               makePage(
-                image: '',
+                image: 'assets/intro 3.png',
                 title: Strings.stepThreeTitle,
                 content: Strings.stepThreeContent
               ),
