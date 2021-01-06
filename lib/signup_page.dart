@@ -60,7 +60,7 @@ class _SignupPageState extends State<SignupPage> {
                   MyAnimation(
                       1.2,
                       Text(
-                        "Create an account, It's free",
+                        "Buat akun secara gratis!",
                         style: TextStyle(fontSize: 15, color: Colors.grey[700]),
                       )),
                 ],
@@ -178,7 +178,7 @@ class _SignupPageState extends State<SignupPage> {
                         Text("Already have an account?"),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => LoginPage()));

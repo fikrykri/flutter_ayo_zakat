@@ -42,19 +42,24 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              MyAnimation(
-                  1,
-                  Text(
-                    "Login",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  )), // TextStyle // Text
-              // SizedBox(height: 20),
-              MyAnimation(
-                  1.2,
-                  Text(
-                    "Masuk Ke Akunmu",
-                    style: TextStyle(fontSize: 15, color: Colors.grey[700]),
-                  )), // coloumn
+              Column(
+                children: [
+                  MyAnimation(
+                      1,
+                      Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      )),
+                  SizedBox(height: 20),
+                  MyAnimation(
+                      1.2,
+                      Text(
+                        "Masuk Ke Akunmu",
+                        style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                      )), // coloumn
+                ],
+              ), // TextStyle // Text
               Form(
                 key: _formKey,
                 child: Column(
@@ -146,33 +151,32 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         )),
                     SizedBox(height: 20),
-                    Container(
-                      child: MyAnimation(
-                          1.5,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Don't have an account?"),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignupPage()));
-                                },
-                                child: Text(
-                                  " Sign Up",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),
-                                ),
-                              )
-                            ],
-                          )),
-                    )
                   ],
                 ),
               ),
+              Container(
+                child: MyAnimation(
+                    1.5,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Don't have an account?"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()));
+                          },
+                          child: Text(
+                            " Sign Up",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                        )
+                      ],
+                    )),
+              )
             ],
           ),
         ),
