@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
 import 'package:flutter_ayo_zakat/firebase_auth.dart';
+import 'package:flutter_ayo_zakat/introduction.dart';
 import 'package:flutter_ayo_zakat/signup_page.dart';
 
 import 'landing_page.dart';
@@ -110,13 +111,12 @@ class _LoginPageState extends State<LoginPage> {
                                               email: _emailController.text,
                                               pass: _passController.text);
                                       if (result.user != null) {
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LandingPage(
-                                                      user: result.user,
-                                                    )));
+                                                    // LandingPage(user: result.user)
+                                                    IntroPage()));
                                       } else {
                                         showDialog(
                                             context: context,

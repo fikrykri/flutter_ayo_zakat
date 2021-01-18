@@ -13,9 +13,7 @@ class _IntroPageState extends State<IntroPage> {
 
   @override
   void initState() {
-    _pageController = PageController(
-      initialPage: 0
-    );
+    _pageController = PageController(initialPage: 0);
     super.initState();
   }
 
@@ -35,11 +33,13 @@ class _IntroPageState extends State<IntroPage> {
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 20, top: 20),
-            child: Text('Skip', style: TextStyle(
-              color: ColorSys.gray,
-              fontSize: 18,
-              fontWeight: FontWeight.w400
-            ),),
+            child: Text(
+              'Skip',
+              style: TextStyle(
+                  color: ColorSys.gray,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400),
+            ),
           )
         ],
       ),
@@ -55,21 +55,18 @@ class _IntroPageState extends State<IntroPage> {
             controller: _pageController,
             children: <Widget>[
               makePage(
-                image: 'assets/intro1.png',
-                title: Strings.stepOneTitle,
-                content: Strings.stepOneContent
-              ),
+                  image: 'assets/images/intro1.png',
+                  title: Strings.stepOneTitle,
+                  content: Strings.stepOneContent),
               makePage(
-                reverse: true,
-                image: 'assets/intro2.png',
-                title: Strings.stepTwoTitle,
-                content: Strings.stepTwoContent
-              ),
+                  reverse: true,
+                  image: 'assets/images/intro2.png',
+                  title: Strings.stepTwoTitle,
+                  content: Strings.stepTwoContent),
               makePage(
-                image: 'assets/intro 3.png',
-                title: Strings.stepThreeTitle,
-                content: Strings.stepThreeContent
-              ),
+                  image: 'assets/images/intro3.png',
+                  title: Strings.stepThreeTitle,
+                  content: Strings.stepThreeContent),
             ],
           ),
           Container(
@@ -90,37 +87,50 @@ class _IntroPageState extends State<IntroPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          !reverse ? 
-          Column(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(image),
-              ),
-              SizedBox(height: 30,),
-            ],
-          ) : SizedBox(),
-          Text(title, style: TextStyle(
-            color: ColorSys.primary,
-            fontSize: 30,
-            fontWeight: FontWeight.bold
-          ),),
-          SizedBox(height: 20,),
-          Text(content, textAlign: TextAlign.center, style: TextStyle(
-            color: ColorSys.gray,
-            fontSize: 20,
-            fontWeight: FontWeight.w400
-          ),),
-          reverse ? 
-          Column(
-            children: <Widget>[
-              SizedBox(height: 30,),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Image.asset(image),
-              ),
-            ],
-          ) : SizedBox(),
+          !reverse
+              ? Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Image.asset(image),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                  ],
+                )
+              : SizedBox(),
+          Text(
+            title,
+            style: TextStyle(
+                color: ColorSys.primary,
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            content,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: ColorSys.gray,
+                fontSize: 20,
+                fontWeight: FontWeight.w400),
+          ),
+          reverse
+              ? Column(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Image.asset(image),
+                    ),
+                  ],
+                )
+              : SizedBox(),
         ],
       ),
     );
@@ -133,15 +143,13 @@ class _IntroPageState extends State<IntroPage> {
       width: isActive ? 30 : 6,
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-        color: ColorSys.secoundry,
-        borderRadius: BorderRadius.circular(5)
-      ),
+          color: ColorSys.secoundry, borderRadius: BorderRadius.circular(5)),
     );
   }
 
   List<Widget> _buildIndicator() {
     List<Widget> indicators = [];
-    for (int i = 0; i<3; i++) {
+    for (int i = 0; i < 3; i++) {
       if (currentIndex == i) {
         indicators.add(_indicator(true));
       } else {

@@ -132,11 +132,10 @@ class _SignupPageState extends State<SignupPage> {
                                         pass: _passController.text);
                                 if (result.user != null) {
                                   // Go to profile page
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              LandingPage(user: result.user)));
+                                          builder: (context) => LoginPage()));
                                 } else {
                                   // Show dialog
                                   showDialog(
