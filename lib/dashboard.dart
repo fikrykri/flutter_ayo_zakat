@@ -33,7 +33,7 @@ class DashboardPage extends StatelessWidget {
                       MyAnimation(
                           1,
                           Image.asset(
-                            'assets/menu.png',
+                            'assets/images/menu.png',
                             width: 20,
                           )),
                       SizedBox(
@@ -47,7 +47,7 @@ class DashboardPage extends StatelessWidget {
                             flex: 4,
                             child: MyAnimation(
                               1.2,
-                              Text('Best Online \nSocks Collection',
+                              Text('User',
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class DashboardPage extends StatelessWidget {
                     children: <Widget>[
                       MyAnimation(
                         1.2,
-                        Text('Choose \na category',
+                        Text('Home',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -200,7 +200,7 @@ class DashboardPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(13.0),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
-                // colors: [startColor, endColor],
+                colors: [startColor, endColor],
               ),
               boxShadow: [
                 BoxShadow(
