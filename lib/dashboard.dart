@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ayo_zakat/components/view_page.dart';
 import 'animation/animation.dart';
-import 'component/view_page.dart';
+import 'components/Strings.dart';
 import 'package:page_transition/page_transition.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -33,7 +34,7 @@ class DashboardPage extends StatelessWidget {
                       MyAnimation(
                           1,
                           Image.asset(
-                            'assets/menu.png',
+                            'assets/images/menu.png',
                             width: 20,
                           )),
                       SizedBox(
@@ -47,7 +48,7 @@ class DashboardPage extends StatelessWidget {
                             flex: 4,
                             child: MyAnimation(
                               1.2,
-                              Text('Best Online \nSocks Collection',
+                              Text(Strings.headerTitle,
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold,
@@ -56,8 +57,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           Expanded(
                             flex: 3,
-                            child: MyAnimation(1.3,
-                                Image.asset('assets/images/background.png')),
+                            child: MyAnimation(
+                                1.3, Image.asset('assets/images/intro3.png')),
                           ),
                         ],
                       )
@@ -103,7 +104,7 @@ class DashboardPage extends StatelessWidget {
                     children: <Widget>[
                       MyAnimation(
                         1.2,
-                        Text('Choose \na category',
+                        Text('Pilih \nkategori',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -120,7 +121,7 @@ class DashboardPage extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   onPressed: () {},
                                   color: Color.fromRGBO(251, 53, 105, 0.1),
-                                  child: Text('Adult',
+                                  child: Text('Zakat',
                                       style: TextStyle(
                                           color:
                                               Color.fromRGBO(251, 53, 105, 1),
@@ -138,7 +139,7 @@ class DashboardPage extends StatelessWidget {
                                   padding: EdgeInsets.all(10),
                                   onPressed: () {},
                                   color: Color.fromRGBO(97, 90, 90, 0.1),
-                                  child: Text('Children',
+                                  child: Text('Donasi',
                                       style: TextStyle(
                                           color:
                                               Color.fromRGBO(97, 90, 90, 0.6),
@@ -169,14 +170,14 @@ class DashboardPage extends StatelessWidget {
                           context: context,
                           startColor: Color.fromRGBO(251, 121, 155, 1),
                           endColor: Color.fromRGBO(251, 53, 105, 1),
-                          image: 'assets/images/background.png')),
+                          image: 'assets/images/intro3.png')),
                   MyAnimation(
                       1.4,
                       makeCard(
                           context: context,
                           startColor: Color.fromRGBO(203, 251, 255, 1),
                           endColor: Color.fromRGBO(81, 223, 234, 1),
-                          image: 'assets/images/background.png')),
+                          image: 'assets/images/intro3.png')),
                 ],
               ),
             )
@@ -200,7 +201,7 @@ class DashboardPage extends StatelessWidget {
               borderRadius: BorderRadius.circular(13.0),
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
-                // colors: [startColor, endColor],
+                colors: [startColor, endColor],
               ),
               boxShadow: [
                 BoxShadow(
