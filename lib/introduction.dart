@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ayo_zakat/dashboard.dart';
 import 'components/ColorsSys.dart';
 import 'components/Strings.dart';
 
@@ -31,14 +32,20 @@ class _IntroPageState extends State<IntroPage> {
         elevation: 0,
         backgroundColor: Colors.white,
         actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 20, top: 20),
-            child: Text(
-              'Skip',
-              style: TextStyle(
-                  color: ColorSys.gray,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => DashboardPage()));
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 20, top: 20),
+              child: Text(
+                'Skip',
+                style: TextStyle(
+                    color: ColorSys.gray,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400),
+              ),
             ),
           )
         ],
