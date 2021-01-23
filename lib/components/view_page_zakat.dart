@@ -5,7 +5,7 @@ import 'package:flutter_ayo_zakat/components/Strings.dart';
 
 import '../animation/animation.dart';
 
-class ViewPage extends StatelessWidget {
+class ViewPageZakat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -33,7 +33,7 @@ class ViewPage extends StatelessWidget {
                     child: MyAnimation(
                         1.3,
                         Image.asset(
-                          'assets/images/intro3.png',
+                          'assets/images/dashboard2.png',
                         )),
                   ),
                 )),
@@ -157,19 +157,19 @@ class ViewPage extends StatelessWidget {
                           // SizedBox(
                           //   height: 50,
                           // ),
-                          MyAnimation(
-                            1.2,
-                            Text(
-                              'More option',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(97, 90, 90, .54),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          // MyAnimation(
+                          //   1.2,
+                          //   Text(
+                          //     'More option',
+                          //     style: TextStyle(
+                          //         color: Color.fromRGBO(97, 90, 90, .54),
+                          //         fontSize: 18,
+                          //         fontWeight: FontWeight.bold),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   height: 20,
+                          // ),
                           // Container(
                           //   height: 80,
                           //   child: ListView(
@@ -330,20 +330,20 @@ class ViewPage extends StatelessWidget {
                                       textBaseline: TextBaseline.alphabetic,
                                       children: <Widget>[
                                         Text(
-                                          '\$14.',
+                                          'Rp. ',
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 22,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Text('54',
+                                        Text('',
                                             style: TextStyle(
                                               color: Colors.white,
                                             )),
                                       ],
                                     ),
                                     Text(
-                                      'Pay',
+                                      'Bayar',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 25),
                                     ),
