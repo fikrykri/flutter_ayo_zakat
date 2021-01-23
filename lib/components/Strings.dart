@@ -11,4 +11,6 @@ class Strings {
   static var headerTitle = "Hallo \nIndahnya Berbagi";
   static var cardDescZakatMaal =
       "Zakat maal (harta) adalah zakat penghasilan seperti hasil pertanian, hasil pertambangan, hasil laut, hasil perniagaan, hasil ternak, harta temuan, emas dan perak. Masing-masing jenis penghasilan memiliki perhitungannya sendiri.";
+  static var cardDescDonasi =
+      "Pemberian pada umumnya bersifat secara fisik oleh perorangan atau badan hukum, pemberian ini mempunyai sifat sukarela dengan tanpa adanya imbalan bersifat keuntungan kepada orang lain.";
 }
