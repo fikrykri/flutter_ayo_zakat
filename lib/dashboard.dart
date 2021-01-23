@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ayo_zakat/components/view_page.dart';
+import 'package:flutter_ayo_zakat/components/view_page_donasi.dart';
+import 'package:flutter_ayo_zakat/components/view_page_zakat.dart';
 import 'animation/animation.dart';
 import 'components/Strings.dart';
 import 'package:page_transition/page_transition.dart';
@@ -57,8 +58,8 @@ class DashboardPage extends StatelessWidget {
                           ),
                           Expanded(
                             flex: 3,
-                            child: MyAnimation(
-                                1.3, Image.asset('assets/images/intro3.png')),
+                            child: MyAnimation(1.3,
+                                Image.asset('assets/images/dashboard1.png')),
                           ),
                         ],
                       )
@@ -138,11 +139,11 @@ class DashboardPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(5)),
                                   padding: EdgeInsets.all(10),
                                   onPressed: () {},
-                                  color: Color.fromRGBO(97, 90, 90, 0.1),
+                                  color: Color.fromRGBO(203, 251, 255, 1),
                                   child: Text('Donasi',
                                       style: TextStyle(
                                           color:
-                                              Color.fromRGBO(97, 90, 90, 0.6),
+                                              Color.fromRGBO(81, 223, 234, 1),
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold)),
                                 )),
@@ -168,16 +169,34 @@ class DashboardPage extends StatelessWidget {
                       1.3,
                       makeCard(
                           context: context,
+                          text: 'Zakat',
+                          textTapMe: 'Tap untuk melanjutkan',
                           startColor: Color.fromRGBO(251, 121, 155, 1),
                           endColor: Color.fromRGBO(251, 53, 105, 1),
-                          image: 'assets/images/intro3.png')),
+                          image: 'assets/images/dashboard2.png',
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ViewPageZakat()));
+                          })),
                   MyAnimation(
                       1.4,
                       makeCard(
                           context: context,
+                          text: 'Donasi',
+                          textTapMe: 'Tap untuk melanjutkan',
                           startColor: Color.fromRGBO(203, 251, 255, 1),
                           endColor: Color.fromRGBO(81, 223, 234, 1),
-                          image: 'assets/images/intro3.png')),
+                          image: 'assets/images/dashboard3.png',
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.fade,
+                                    child: ViewPageDonasi()));
+                          })),
                 ],
               ),
             )
@@ -187,12 +206,10 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget makeCard({context, startColor, endColor, image}) {
+  Widget makeCard(
+      {context, startColor, endColor, image, text, textTapMe, onTap}) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            PageTransition(type: PageTransitionType.fade, child: ViewPage()));
-      },
+      onTap: onTap,
       child: AspectRatio(
         aspectRatio: 4 / 5,
         child: Container(
@@ -209,11 +226,32 @@ class DashboardPage extends StatelessWidget {
                     blurRadius: 10,
                     offset: Offset(5, 10))
               ]),
-          child: Padding(
-            padding: EdgeInsets.all(50),
-            child: Center(
-              child: Image.asset(image),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(text,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 50, left: 50),
+                child: Center(
+                  child: Image.asset(image),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Text(textTapMe,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                    )),
+              ),
+            ],
           ),
         ),
       ),
