@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
+import 'package:flutter_ayo_zakat/components/make_input_button.dart';
 import 'package:flutter_ayo_zakat/firebase_auth.dart';
+import 'package:flutter_ayo_zakat/introduction.dart';
 import 'package:flutter_ayo_zakat/signup_page.dart';
 
 import 'landing_page.dart';
@@ -42,19 +44,24 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              MyAnimation(
-                  1,
-                  Text(
-                    "Login",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  )), // TextStyle // Text
-              // SizedBox(height: 20),
-              MyAnimation(
-                  1.2,
-                  Text(
-                    "Masuk Ke Akunmu",
-                    style: TextStyle(fontSize: 15, color: Colors.grey[700]),
-                  )), // coloumn
+              Column(
+                children: [
+                  MyAnimation(
+                      1,
+                      Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      )),
+                  SizedBox(height: 20),
+                  MyAnimation(
+                      1.2,
+                      Text(
+                        "Masuk Ke Akunmu",
+                        style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                      )), // coloumn
+                ],
+              ), // TextStyle // Text
               Form(
                 key: _formKey,
                 child: Column(
@@ -105,13 +112,12 @@ class _LoginPageState extends State<LoginPage> {
                                               email: _emailController.text,
                                               pass: _passController.text);
                                       if (result.user != null) {
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    LandingPage(
-                                                      user: result.user,
-                                                    )));
+                                                    // LandingPage(user: result.user)
+                                                    IntroPage()));
                                       } else {
                                         showDialog(
                                             context: context,
@@ -146,68 +152,36 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                         )),
                     SizedBox(height: 20),
-                    Container(
-                      child: MyAnimation(
-                          1.5,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Don't have an account?"),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignupPage()));
-                                },
-                                child: Text(
-                                  " Sign Up",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18),
-                                ),
-                              )
-                            ],
-                          )),
-                    )
                   ],
                 ),
               ),
+              Container(
+                child: MyAnimation(
+                    1.5,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Don't have an account?"),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignupPage()));
+                          },
+                          child: Text(
+                            " Sign Up",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                        )
+                      ],
+                    )),
+              )
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget makeInput({label, obscureText = false, controller, validator}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          label,
-          style: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TextFormField(
-          obscureText: obscureText,
-          controller: controller,
-          validator: validator,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])),
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])),
-          ),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-      ],
     );
   }
 }

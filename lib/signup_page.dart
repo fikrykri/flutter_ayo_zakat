@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
+import 'package:flutter_ayo_zakat/components/make_input_button.dart';
 import 'package:flutter_ayo_zakat/firebase_auth.dart';
 import 'package:flutter_ayo_zakat/login_page.dart';
 
@@ -60,7 +61,7 @@ class _SignupPageState extends State<SignupPage> {
                   MyAnimation(
                       1.2,
                       Text(
-                        "Create an account, It's free",
+                        "Buat akun secara gratis!",
                         style: TextStyle(fontSize: 15, color: Colors.grey[700]),
                       )),
                 ],
@@ -132,11 +133,10 @@ class _SignupPageState extends State<SignupPage> {
                                         pass: _passController.text);
                                 if (result.user != null) {
                                   // Go to profile page
-                                  Navigator.push(
+                                  Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              LandingPage(user: result.user)));
+                                          builder: (context) => LoginPage()));
                                 } else {
                                   // Show dialog
                                   showDialog(
@@ -178,7 +178,7 @@ class _SignupPageState extends State<SignupPage> {
                         Text("Already have an account?"),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => LoginPage()));
@@ -196,39 +196,6 @@ class _SignupPageState extends State<SignupPage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget makeInput({label, obscureText = false, controller, validator}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          label,
-          style: TextStyle(
-              fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        TextFormField(
-          obscureText: obscureText,
-          controller: controller,
-          validator: validator,
-          decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])),
-            border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])),
-            errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])),
-          ),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-      ],
     );
   }
 }

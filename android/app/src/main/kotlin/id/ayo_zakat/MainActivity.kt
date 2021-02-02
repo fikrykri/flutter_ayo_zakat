@@ -1,4 +1,4 @@
-package com.example.ayo_zakat
+package id.ayo_zakat
 
 import io.flutter.embedding.android.FlutterActivity
 

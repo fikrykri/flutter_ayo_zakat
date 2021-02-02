@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
                   MyAnimation(
                       1,
                       Text(
-                        "Welcome",
+                        "Selamat Datang",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 30),
                       )),
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
                   MyAnimation(
                       1.2,
                       Text(
-                        "Automatic identity verification which enables you to verify your identity",
+                        "Permudah hidupmu dengan \n Ayo Zakat",
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.grey[700], fontSize: 15),
                       )),
@@ -43,7 +43,8 @@ class HomePage extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 3,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/images/background.png'))),
+                            image:
+                                AssetImage('assets/images/humans-char1.png'))),
                   )),
               Column(
                 children: [
