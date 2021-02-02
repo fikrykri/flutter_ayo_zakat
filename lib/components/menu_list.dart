@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ayo_zakat/dashboard';
+import 'package:flutter_ayo_zakat/dashboard.dart';
 
 class MenuList extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class MenuList extends StatelessWidget {
             mainAxisSize:
             MainAxisSize.min,
             mainAxisAlignment:
-  MainAxisAlignment.spaceAround
+  MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
@@ -38,7 +38,7 @@ class MenuList extends StatelessWidget {
         ),
         Divider(
           color: Colors.grey[200] ,
-        )
+        ),
         Container(
           width: 500,
           height: 50,
@@ -96,14 +96,14 @@ class MenuList extends StatelessWidget {
             onPressed: (){
               MaterialPageRoute(
                 builder: (context) =>
-  DashboardPage()));
+  DashboardPage());
             },
             splashColor: Colors.greenAccent,
             color: Colors.grey[100],
             elevation: 0,
-            child: Text("About Us"),
-              style: TextStyle(color:
+            child: Text("About Us", style: TextStyle(color:
   Colors.black,fontSize: 22)),
+              ),
           ),
       ],
     ),
