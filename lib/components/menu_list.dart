@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ayo_zakat/about_page.dart';
 import 'package:flutter_ayo_zakat/dashboard.dart';
+import 'package:flutter_ayo_zakat/profile_page.dart';
+import 'package:flutter_ayo_zakat/settings_page.dart';
 
 class MenuList extends StatelessWidget {
   @override
@@ -7,9 +10,9 @@ class MenuList extends StatelessWidget {
     return Container(
       color: Colors.grey[100],
       child: Padding(
-        padding: EdgeInsets.only(left: 0),
+        padding: EdgeInsets.only(right: 130),
         child: Align(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,7 +23,7 @@ class MenuList extends StatelessWidget {
                 height: 50,
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (context) => DashboardPage()));
@@ -40,10 +43,8 @@ class MenuList extends StatelessWidget {
                 height: 50,
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DashboardPage()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()));
                   },
                   splashColor: Colors.redAccent,
                   color: Colors.grey[100],
@@ -63,10 +64,10 @@ class MenuList extends StatelessWidget {
                 height: 50,
                 child: RaisedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DashboardPage()));
+                            builder: (context) => SettingsPage()));
                   },
                   splashColor: Colors.blueAccent,
                   color: Colors.grey[100],
@@ -86,7 +87,8 @@ class MenuList extends StatelessWidget {
                 height: 50,
                 child: RaisedButton(
                   onPressed: () {
-                    MaterialPageRoute(builder: (context) => DashboardPage());
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => AboutPage()));
                   },
                   splashColor: Colors.greenAccent,
                   color: Colors.grey[100],
