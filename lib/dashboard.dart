@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/components/make_card.dart';
+import 'package:flutter_ayo_zakat/components/menu_bg_style.dart';
 import 'package:flutter_ayo_zakat/components/menu_list.dart';
 import 'package:flutter_ayo_zakat/components/view_page_donasi.dart';
 import 'package:flutter_ayo_zakat/components/view_page_zakat.dart';
@@ -14,7 +15,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage>
     with SingleTickerProviderStateMixin {
-  final Duration duration = const Duration(milliseconds: 100);
+  final Duration duration = const Duration(milliseconds: 300);
   bool isCollapsed = true;
   double screenWidth, screenHeight;
   AnimationController _controller;
@@ -42,6 +43,7 @@ class _DashboardPageState extends State<DashboardPage>
     return Stack(
       children: [
         MenuList(),
+        MenuBgStyles(),
         AnimatedPositioned(
           duration: duration,
           top: 0,
