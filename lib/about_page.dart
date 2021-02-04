@@ -1,10 +1,10 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_ayo_zakat/components/Strings.dart';
+import 'package:flutter_ayo_zakat/dashboard.dart';
 import 'animation/animation.dart';
 
-class ViewPageDonasi extends StatelessWidget {
+class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -42,7 +42,8 @@ class ViewPageDonasi extends StatelessWidget {
             left: 10,
             child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => DashboardPage()));
               },
               icon: Icon(
                 Icons.arrow_back_ios,
@@ -82,6 +83,7 @@ class ViewPageDonasi extends StatelessWidget {
                                     color: Colors.black,
                                     fontSize: 23,
                                     fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.justify,
                               ),
                             ),
                           ),
@@ -93,11 +95,15 @@ class ViewPageDonasi extends StatelessWidget {
                             Text(
                               Strings.aboutDesc,
                               style: TextStyle(
-                                  color: Colors.black,
-                                  height: 1.4,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.black,
+                                height: 1.4,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.justify,
                             ),
+                          ),
+                          SizedBox(
+                            height: 10,
                           ),
                           MyAnimation(
                             1.4,
@@ -108,42 +114,49 @@ class ViewPageDonasi extends StatelessWidget {
                                 height: 1.4,
                                 fontSize: 18,
                               ),
+                              textAlign: TextAlign.justify,
                             ),
                           ),
                           SizedBox(
                             height: 50,
                           ),
-                          MyAnimation(
-                            1.5,
-                            Text(
-                              "AyoZakat version 1.0",
-                              style: TextStyle(
-                                color: Colors.black,
-                                height: 1.4,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          MyAnimation(
-                            1.5,
-                            Text(
-                              "Term of Use and Privacy Policy",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                height: 1.4,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          MyAnimation(
-                            1.5,
-                            Text(
-                              "Copyright \u00a9 2021 Ayo Zakat",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                height: 1.4,
-                                fontSize: 12,
-                              ),
+                          Center(
+                            child: Column(
+                              children: [
+                                MyAnimation(
+                                  1.5,
+                                  Text(
+                                    "AyoZakat version 1.0",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      height: 1.4,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                MyAnimation(
+                                  1.5,
+                                  Text(
+                                    "Term of Use and Privacy Policy",
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      height: 1.4,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                MyAnimation(
+                                  1.5,
+                                  Text(
+                                    "Copyright \u00a9 2021 Ayo Zakat",
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      height: 1.4,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
