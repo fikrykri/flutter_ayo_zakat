@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
 import 'package:flutter_ayo_zakat/dashboard.dart';
+import 'package:flutter_ayo_zakat/firebase_auth.dart';
+import 'package:flutter_ayo_zakat/login_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -144,7 +146,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
-                    onPressed: () {},
+                    onPressed: () async {
+                      AuthService.signOut();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          (route) => false);
+                    },
                     child: Text("SIGN OUT",
                         style: TextStyle(
                             fontSize: 16,
