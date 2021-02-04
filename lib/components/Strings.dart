@@ -13,4 +13,8 @@ class Strings {
       "Zakat maal (harta) adalah zakat penghasilan seperti hasil pertanian, hasil pertambangan, hasil laut, hasil perniagaan, hasil ternak, harta temuan, emas dan perak. Masing-masing jenis penghasilan memiliki perhitungannya sendiri.";
   static var cardDescDonasi =
       "Pemberian pada umumnya bersifat secara fisik oleh perorangan atau badan hukum, pemberian ini mempunyai sifat sukarela dengan tanpa adanya imbalan bersifat keuntungan kepada orang lain.";
+  static var aboutDesc =
+      "Ayo zakat adalah wadah untuk membayar zakat dan memberikan donasi secara online.";
+  static var about2Desc =
+      "Kami percaya, kemajuan teknologi sepatutnya dimanfaatkan untuk menghubungkan semangat kebaikan dan gotong royong. di Ayo Zakat, Masyarakat bisa membayar zakat dan memberikan donasi secara online dan lebih mudah.";
 }
