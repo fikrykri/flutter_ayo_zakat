@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ayo_zakat/Model/history.dart';
 import 'package:flutter_ayo_zakat/Widgets/make_input_button.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProsesDonasi extends StatefulWidget {
   final History history;
@@ -15,6 +19,7 @@ class ProsesDonasi extends StatefulWidget {
 
 class _ProsesDonasiState extends State<ProsesDonasi> {
   TextEditingController nominalController = TextEditingController();
+  File image;
 
   @override
   void initState() {
@@ -71,6 +76,38 @@ class _ProsesDonasiState extends State<ProsesDonasi> {
                       controller: nominalController,
                       keyboardType: TextInputType.number)),
               MyAnimation(
+                1.3,
+                Container(
+                  padding: EdgeInsets.only(top: 3, left: 3),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border(
+                        bottom: BorderSide(color: Colors.black),
+                        top: BorderSide(color: Colors.black),
+                        left: BorderSide(color: Colors.black),
+                        right: BorderSide(color: Colors.black),
+                      )),
+                  child: MaterialButton(
+                    minWidth: double.infinity,
+                    height: 59,
+                    onPressed: () {
+                      getImage(context);
+                    },
+                    color: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Text(
+                      "Upload Bukti Donasi",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+              MyAnimation(
                 1.4,
                 Container(
                   padding: EdgeInsets.only(top: 3, left: 3),
@@ -85,7 +122,7 @@ class _ProsesDonasiState extends State<ProsesDonasi> {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {
+                    onPressed: () async {
                       String randomMillis = ('D-') +
                           DateTime.now().millisecondsSinceEpoch.toString();
                       History history = History(
@@ -93,12 +130,11 @@ class _ProsesDonasiState extends State<ProsesDonasi> {
                             ? widget.history.id
                             : randomMillis,
                         name: 'Donasi',
-                        image: '',
-                        // image != null
-                        //     ? widget.history != null
-                        //         ? await uploadFile(image, widget.id)
-                        //         : await uploadFile(image, randomMillis)
-                        //     : '',
+                        image: image != null
+                            ? widget.history != null
+                                ? await uploadFile(image, widget.id)
+                                : await uploadFile(image, randomMillis)
+                            : '',
                         nominal: double.parse(nominalController.text),
                         status: '',
                       );
@@ -134,5 +170,61 @@ class _ProsesDonasiState extends State<ProsesDonasi> {
         ),
       ),
     );
+  }
+
+  imgFromCamera() async {
+    PickedFile imgCamera = await ImagePicker()
+        .getImage(source: ImageSource.camera, imageQuality: 50);
+    setState(() {
+      image = File(imgCamera.path);
+    });
+  }
+
+  imgFromGallery() async {
+    PickedFile imgGallery = await ImagePicker()
+        .getImage(source: ImageSource.gallery, imageQuality: 50);
+    setState(() {
+      image = File(imgGallery.path);
+    });
+  }
+
+  getImage(context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Container(
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                    leading: Icon(Icons.photo_library),
+                    title: Text('Gallery'),
+                    onTap: () {
+                      imgFromGallery();
+                      Navigator.of(context).pop();
+                    }),
+                ListTile(
+                  leading: Icon(Icons.photo_camera),
+                  title: Text('Camera'),
+                  onTap: () {
+                    imgFromCamera();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<String> uploadFile(File image, String filename) async {
+    FirebaseStorage storage = FirebaseStorage.instance;
+    Reference ref = storage.ref().child("bukti-pembayaran-donasi/" + filename);
+    UploadTask uploadTask = ref.putFile(image);
+    return uploadTask.then((res) async {
+      return await res.ref.getDownloadURL();
+    });
   }
 }
