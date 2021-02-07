@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_ayo_zakat/animation/animation.dart';
-import 'package:flutter_ayo_zakat/firebase_auth.dart';
-import 'package:flutter_ayo_zakat/login_page.dart';
+import 'package:flutter_ayo_zakat/Services/firebase_auth.dart';
+import 'package:flutter_ayo_zakat/Pages/login_page.dart';
 
 class LandingPage extends StatefulWidget {
-  final FirebaseUser user;
+  final User user;
 
   LandingPage({this.user});
 
