@@ -107,6 +107,9 @@ class _ProsesDonasiState extends State<ProsesDonasi> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               MyAnimation(
                 1.4,
                 Container(
